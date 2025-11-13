@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const password = document.getElementById('loginPassword').value;
       if (login === 'admin' && password === '1822br') {
         sessionStorage.setItem('adminAuth', 'true');
-        window.location.href = 'admin.html';
+        window.location.href = 'registro-aeronaves.html';
       } else if (MEMBER_LOGINS[login] && password === MEMBER_LOGINS[login]) {
         sessionStorage.setItem('memberAuth', login);
         window.location.href = 'registro-aeronaves.html';
@@ -163,7 +163,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    carregarInscricoesAdmin();
     carregarAeronavesAdmin();
 
     function carregarInscricoesAdmin() {
