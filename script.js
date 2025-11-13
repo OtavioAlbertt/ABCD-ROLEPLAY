@@ -4,11 +4,11 @@ const STORAGE_KEY = "fabRegistros";
 
 // =================== LOGINS DOS MEMBROS ===================
 const MEMBER_LOGINS = {
-  "Maj. Luke": "luke2025",
-  "1° Sgt. Albert": "albert2025",
-  "2° Sgt. Carolina": "carolina2025",
-  "1° Ten. Prendel": "prendel2025",
-  "Cap. Vallote": "vallote2025"
+  "Maj. Luke": "Comando Geral",
+  "1° Sgt. Albert": "Comandante",
+  "2° Sgt. Carolina": "Subcomandante",
+  "1° Ten. Prendel": "Piloto",
+  "Cap. Vallote": "Piloto"
 };
 
 // =================== LOCALSTORAGE ONLY ===================
