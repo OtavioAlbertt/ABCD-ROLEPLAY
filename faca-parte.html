@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ e <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
@@ -56,6 +56,54 @@
       color: #fff;
       box-shadow: 0 0 15px rgba(0,191,255,0.5);
       transform: scale(1.05);
+    }
+
+    /* Modal de Login */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      backdrop-filter: blur(5px);
+    }
+    .modal-content {
+      background: rgba(255,255,255,0.1);
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #00bfff;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,191,255,0.5);
+    }
+    .modal-content h3 {
+      color: #00bfff;
+      margin-bottom: 20px;
+    }
+    .modal-content input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #00bfff;
+      border-radius: 5px;
+      background: rgba(255,255,255,0.1);
+      color: #e0e8ff;
+      outline: none;
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .close:hover {
+      color: #fff;
     }
 
     /* ======== Formulário ======== */
@@ -190,11 +238,6 @@
       <span class="min">| Força Aérea Brasileira</span>
     </div>
     <ul class="nav-links">
-      <li><a class="nav-link" href="index.html">Início</a></li>
-      <li><a class="nav-link" href="quem-somos.html">Quem Somos</a></li>
-      <li><a class="nav-link" href="hierarquia.html">Hierarquia</a></li>
-      <li><a class="nav-link active" href="faca-parte.html">Faça Parte</a></li>
-
     </ul>
     <button id="btnEntrar" class="btn-outline-success">Entrar</button>
   </nav>
