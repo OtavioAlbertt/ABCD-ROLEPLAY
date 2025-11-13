@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+body {
+  background: linear-gradient(180deg, #0b1a33, #112b4a);
+  color: #e0e6f1;
+  min-height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+  background-color: rgba(10, 25, 55, 0.9);
+  color: #e0e6f1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+  border-bottom: 2px solid #1e56a0;
+}
+
+.navbar img {
+  width: 60px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+}
+
+.min {
+  color: #77aaff;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #d6e2f3;
+  transition: 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: #7db2ff;
+  text-shadow: 0 0 10px #7db2ff;
+}
+
+.btn-outline-success {
+  background: none;
+  border: 1px solid #7db2ff;
+  color: #7db2ff;
+  padding: 6px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-outline-success:hover {
+  background-color: #7db2ff;
+  color: #0b1a33;
+}
+
+/* Banner */
+.banner {
+  background: url('fotos/bannerfab.jpg') center/cover no-repeat;
+  position: relative;
+  height: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 30, 60, 0.7);
+}
+
+.banner-content {
+  position: relative;
+  color: #fff;
+  text-align: center;
+  max-width: 800px;
+}
+
+.banner-content h2 {
+  font-size: 2.2rem;
+  color: #cce4ff;
+  text-shadow: 0 0 10px #007bff;
+}
+
+.banner-content p {
+  margin: 15px 0;
+  line-height: 1.5;
+  font-size: 1.1rem;
+}
+
+.banner-button {
+  display: inline-block;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.banner-button:hover {
+  background-color: #1e56a0;
+  box-shadow: 0 0 10px #7db2ff;
+}
+
+/* Cards */
+.container {
+  text-align: center;
+  padding: 40px;
+}
+
+.header-title h1 {
+  color: #9ecfff;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: rgba(255,255,255,0.05);
+  padding: 30px;
+  border-radius: 10px;
+  border: 1px solid #1e56a0;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
+}
+
+.carousel {
+  width: 120px;
+  margin-bottom: 15px;
+}
+
+.slogan {
+  color: #a9d2ff;
+  font-size: 1.1rem;
+}
+
+/* Info section */
+.info-section {
+  padding: 50px 20px;
+}
+
+.info-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.info-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid #1e56a0;
+  border-radius: 12px;
+  width: 320px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.info-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 15px rgba(125,178,255,0.4);
+}
+
+.info-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.info-text {
+  padding: 15px;
+}
+
+.info-text h3 {
+  color: #9ecfff;
+  margin-bottom: 10px;
+}
+
+.info-text p {
+  font-size: 0.95rem;
+  color: #dbe7ff;
+}
+
+/* Popup */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  background: rgba(0,0,0,0.6);
+  align-items: center;
+  justify-content: center;
+}
+
+.popup[aria-hidden="false"] {
+  display: flex;
+}
+
+.box {
+  background: #0e1f3d;
+  border: 1px solid #1e56a0;
+  padding: 20px;
+  border-radius: 10px;
+  color: #cce4ff;
+  width: 300px;
+  text-align: center;
+}
+
+.box input {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  border: 1px solid #1e56a0;
+  border-radius: 6px;
+  background: #102a4d;
+  color: #cce4ff;
+}
+
+.popup-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  justify-content: center;
+}

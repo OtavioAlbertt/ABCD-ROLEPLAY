@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Faça Parte - Força Aérea Brasileira</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <script src="script.js"></script>
+
+  <style>
+    /* ======== Fundo animado ======== */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #030a18;
+      color: #e0e8ff;
+      overflow-x: hidden;
+    }
+    canvas#bgParticles {
+      position: fixed;
+      top: 0; left: 0;
+      z-index: -1;
+      width: 100%; height: 100%;
+      display: block;
+    }
+
+    /* ======== Navbar ======== */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background: rgba(0,0,50,0.7);
+      border-bottom: 2px solid #00bfff;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .navbar .brand img { width: 50px; margin-right: 10px; }
+    .navbar .min { font-weight: bold; color: #00bfff; }
+    .nav-links { list-style: none; display: flex; gap: 20px; }
+    .nav-link { text-decoration: none; color: #bcdcff; font-weight: 600; transition: 0.3s; }
+    .nav-link:hover, .nav-link.active { color: #00bfff; }
+    .btn-outline-success {
+      padding: 8px 15px;
+      border: 1px solid #00bfff;
+      background: transparent;
+      color: #00bfff;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .btn-outline-success:hover {
+      background: #00bfff;
+      color: #fff;
+      box-shadow: 0 0 15px rgba(0,191,255,0.5);
+      transform: scale(1.05);
+    }
+
+    /* ======== Formulário ======== */
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 90vh;
+      padding: 20px;
+    }
+    .form-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(0,191,255,0.25);
+      border-radius: 20px;
+      padding: 40px;
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 30px rgba(0,191,255,0.1);
+    }
+    .form-card h3 {
+      color: #00bfff;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px rgba(0,191,255,0.5);
+    }
+    .form-card .descricao {
+      color: #bcdcff;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+    input, select, textarea {
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(0,191,255,0.25);
+      background: rgba(255,255,255,0.08);
+      color: #e0e8ff;
+      outline: none;
+      transition: 0.3s;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: #00bfff;
+      box-shadow: 0 0 10px rgba(0,191,255,0.3);
+      background: rgba(255,255,255,0.12);
+    }
+
+    /* ======== Notificação ======== */
+    .notif-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(3,10,24,0.85);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      backdrop-filter: blur(6px);
+    }
+    .notif-card {
+      background: rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 30px 40px;
+      text-align: center;
+      border: 1px solid rgba(0,191,255,0.25);
+      box-shadow: 0 0 25px rgba(0,191,255,0.2);
+      color: #e0e8ff;
+    }
+    .notif-card img { width: 80px; margin-bottom: 10px; }
+    .notif-card h4 { color: #00bfff; margin-bottom: 8px; }
+    .notif-card p { color: #bcdcff; margin-bottom: 20px; }
+
+    /* Modal de Login */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      backdrop-filter: blur(5px);
+    }
+    .modal-content {
+      background: rgba(255,255,255,0.1);
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #00bfff;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,191,255,0.5);
+    }
+    .modal-content h3 {
+      color: #00bfff;
+      margin-bottom: 20px;
+    }
+    .modal-content input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #00bfff;
+      border-radius: 5px;
+      background: rgba(255,255,255,0.1);
+      color: #e0e8ff;
+      outline: none;
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .close:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fundo animado -->
+  <canvas id="bgParticles"></canvas>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="brand">
+      <img src="fab.png" alt="logo FAB">
+      <span class="min">| Força Aérea Brasileira</span>
+    </div>
+    <ul class="nav-links">
+      <li><a class="nav-link" href="index.html">Início</a></li>
+      <li><a class="nav-link" href="quem-somos.html">Quem Somos</a></li>
+      <li><a class="nav-link" href="hierarquia.html">Hierarquia</a></li>
+      <li><a class="nav-link active" href="faca-parte.html">Faça Parte</a></li>
+
+    </ul>
+    <button id="btnEntrar" class="btn-outline-success">Entrar</button>
+  </nav>
+
+  <!-- Modal de Login -->
+  <div id="loginModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3>Login — FAB</h3>
+      <input type="text" id="loginUser" placeholder="Nome de usuário" />
+      <input type="password" id="loginPassword" placeholder="Digite a senha" />
+      <button id="loginConfirm" class="btn-outline-success">Entrar</button>
+    </div>
+  </div>
+
+  <!-- Formulário -->
+  <div class="container">
+    <div class="form-card">
+      <h3>Formulário de Alistamento da FAB</h3>
+      <p class="descricao">Junte-se à Força Aérea Brasileira e voe alto! Preencha o formulário abaixo.</p>
+      <form id="formInscricao">
+        <input id="nome" placeholder="Nome completo" required><br>
+        <input id="idade" placeholder="Idade" type="number" required><br>
+        <input id="documento" placeholder="Documento (ID)" required><br>
+        <input id="telefone" placeholder="Telefone (IN-GAME)" required><br>
+        <input id="email" placeholder="E-mail (ou ID Discord)" required><br>
+
+        <label for="area">Área de Interesse</label>
+        <select id="area" required>
+          <option value="">Selecione</option>
+          <option value="piloto">Piloto de Caça</option>
+          <option value="asa_rotativa">Piloto de Asa Rotativa</option>
+          <option value="mecanico">Mecânico de Aeronaves</option>
+          <option value="controlador">Controlador de Voo</option>
+          <option value="infantaria_aerea">Infantaria Aérea</option>
+        </select>
+
+        <label for="motivo">Motivo do Alistamento</label>
+        <select id="motivo" required>
+          <option value="">Selecione</option>
+          <option value="vocacao">Vocação pela aviação militar</option>
+          <option value="defesa">Desejo de servir à Pátria</option>
+          <option value="carreira">Interesse em carreira militar aérea</option>
+          <option value="outros">Outros</option>
+        </select>
+
+        <textarea id="descricao" placeholder="Descreva seu interesse ou experiência prévia" rows="4"></textarea>
+
+        <button type="submit" class="btn-outline-success">Enviar Alistamento</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Notificação -->
+  <div id="notifOverlay" class="notif-overlay">
+    <div class="notif-card">
+      <img src="fab.png" alt="logo">
+      <h4>Alistamento Enviado!</h4>
+      <p>Seu pedido foi registrado com sucesso na Força Aérea Brasileira.</p>
+      <button id="notifClose" class="btn-outline-success">Fechar</button>
+    </div>
+  </div>
+
+
+
+
+  <script>
+    // Captura o envio do formulário e salva no localStorage
+    const form = document.getElementById('formInscricao');
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const registro = {
+        nome: document.getElementById('nome').value,
+        idade: document.getElementById('idade').value,
+        documento: document.getElementById('documento').value,
+        telefone: document.getElementById('telefone').value,
+        email: document.getElementById('email').value,
+        area: document.getElementById('area').value,
+        motivo: document.getElementById('motivo').value,
+        descricao: document.getElementById('descricao').value
+      };
+      const registros = JSON.parse(localStorage.getItem('fabRegistros')) || [];
+      salvarInscricao(registro);
+      document.getElementById('notifOverlay').style.display = 'flex';
+      form.reset();
+    });
+
+    document.getElementById('notifClose').addEventListener('click', function() {
+      document.getElementById('notifOverlay').style.display = 'none';
+    });
+
+    // ======== Fundo animado ========
+    const canvas = document.getElementById('bgParticles');
+    const ctx = canvas.getContext('2d');
+    let particlesArray;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 3 + 1;
+        this.speedX = Math.random() * 1 - 0.5;
+        this.speedY = Math.random() * 1 - 0.5;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if(this.x > canvas.width) this.x = 0;
+        if(this.x < 0) this.x = canvas.width;
+        if(this.y > canvas.height) this.y = 0;
+        if(this.y < 0) this.y = canvas.height;
+      }
+      draw() {
+        ctx.fillStyle = 'rgba(0,191,255,0.7)';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
+        ctx.fill();
+      }
+    }
+
+    function initParticles() {
+      particlesArray = [];
+      for(let i = 0; i < 100; i++) {
+        particlesArray.push(new Particle());
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      particlesArray.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(animate);
+    }
+
+    initParticles();
+    animate();
+  </script>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Quem Somos - Força Aérea Brasileira</title>
+
+  <!-- Estilo global -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Estilo exclusivo da página Quem Somos -->
+  <link rel="stylesheet" href="style-quem-somos.css">
+
+  <!-- Script global -->
+  <script src="script.js"></script>
+
+
+  <style>
+    /* Fundo animado */
+    body {
+      position: relative;
+      background: #030a18;
+      color: #e0e8ff;
+      overflow-x: hidden;
+    }
+    canvas#bgParticles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    /* Garantir que conteúdo fique acima do fundo */
+    .navbar, .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Modal de Login */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      backdrop-filter: blur(5px);
+    }
+    .modal-content {
+      background: rgba(255,255,255,0.1);
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #00bfff;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,191,255,0.5);
+    }
+    .modal-content h3 {
+      color: #00bfff;
+      margin-bottom: 20px;
+    }
+    .modal-content input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #00bfff;
+      border-radius: 5px;
+      background: rgba(255,255,255,0.1);
+      color: #e0e8ff;
+      outline: none;
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .close:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Fundo animado -->
+  <canvas id="bgParticles"></canvas>
+
+  <nav class="navbar">
+    <div class="brand">
+      <img src="fab.png" alt="logo FAB">
+      <span class="min">| Força Aérea Brasileira</span>
+    </div>
+
+    <ul class="nav-links">
+      <li><a class="nav-link" href="index.html">Início</a></li>
+      <li><a class="nav-link active" href="quem-somos.html">Quem Somos</a></li>
+      <li><a class="nav-link" href="hierarquia.html">Hierarquia</a></li>
+      <li><a class="nav-link" href="faca-parte.html">Faça Parte</a></li>
+  
+    </ul>
+
+    <button id="btnEntrar" class="btn-outline-success">Entrar</button>
+  </nav>
+
+  <!-- Modal de Login -->
+  <div id="loginModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3>Login — FAB</h3>
+      <input type="text" id="loginUser" placeholder="Nome de usuário" />
+      <input type="password" id="loginPassword" placeholder="Digite a senha" />
+      <button id="loginConfirm" class="btn-outline-success">Entrar</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <section class="header-title">
+      <div class="about-section">
+        <h1>Quem Somos</h1>
+        <p class="about-intro">
+          A <b>Força Aérea Brasileira (FAB)</b> é o braço aéreo das Forças Armadas do Brasil, responsável por garantir a soberania do espaço aéreo nacional e defender o país contra ameaças vindas pelo ar.
+          Com tecnologia, estratégia e coragem, a FAB atua em todo o território brasileiro, protegendo o espaço aéreo e apoiando a sociedade em missões de paz, resgate e ajuda humanitária.
+        </p>
+
+        <div class="info-grid">
+          <div class="card">
+            <h2>Missão e Funções</h2>
+            <ul>
+              <li><b>Defesa Aérea:</b> Proteger o espaço aéreo brasileiro, garantindo a integridade e soberania do país.</li>
+              <li><b>Controle do Espaço Aéreo:</b> Gerenciar e fiscalizar o tráfego aéreo civil e militar através do DECEA.</li>
+              <li><b>Apoio à Sociedade:</b> Atuar em missões de transporte médico, resgate, combate a incêndios e ajuda humanitária.</li>
+              <li><b>Operações Conjuntas:</b> Trabalhar em conjunto com o Exército e a Marinha em ações de defesa e segurança nacional.</li>
+              <li><b>Missões Internacionais:</b> Participar de missões de paz e cooperação, representando o Brasil com honra e disciplina.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h2>Estrutura e Valores</h2>
+            <ul>
+              <li><b>Organização:</b> Subordinada ao Ministério da Defesa, a FAB é composta por Comandos Aéreos, Bases, Esquadrões e Unidades distribuídas pelo país.</li>
+              <li><b>Valores:</b> Disciplina, coragem, integridade e amor à Pátria são pilares da aviação militar brasileira.</li>
+              <li><b>Lema:</b> Seu lema é <i>"Asas que Protegem o País"</i>, representando o compromisso com a defesa e o serviço à nação.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('bgParticles');
+    const ctx = canvas.getContext('2d');
+    let particlesArray;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 3 + 1;
+        this.speedX = Math.random() * 1 - 0.5;
+        this.speedY = Math.random() * 1 - 0.5;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.x > canvas.width) this.x = 0;
+        if (this.x < 0) this.x = canvas.width;
+        if (this.y > canvas.height) this.y = 0;
+        if (this.y < 0) this.y = canvas.height;
+      }
+      draw() {
+        ctx.fillStyle = 'rgba(0,191,255,0.7)';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
+        ctx.fill();
+      }
+    }
+
+    function initParticles() {
+      particlesArray = [];
+      for(let i = 0; i < 100; i++) {
+        particlesArray.push(new Particle());
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      particlesArray.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(animate);
+    }
+
+    initParticles();
+    animate();
+  </script>
+
+</body>
+</html>

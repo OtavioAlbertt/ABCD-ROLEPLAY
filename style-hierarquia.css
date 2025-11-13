@@ -1,0 +1,142 @@
+/* ================================
+   Estilo da Página de Hierarquia - FAB
+   ================================ */
+
+body {
+  background: radial-gradient(circle at center, #0a1530 0%, #030a18 100%);
+  color: #e0e8ff;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* Título principal */
+.titulo {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 2.5rem;
+  color: #00bfff;
+  text-shadow: 0 0 15px rgba(0, 191, 255, 0.5);
+  letter-spacing: 2px;
+}
+
+/* Seções de nível hierárquico */
+.nivel {
+  margin: 60px auto;
+  max-width: 1100px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(0, 191, 255, 0.1);
+  border: 1px solid rgba(0, 191, 255, 0.2);
+  backdrop-filter: blur(8px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nivel:hover {
+  transform: scale(1.01);
+  box-shadow: 0 0 35px rgba(0, 191, 255, 0.25);
+}
+
+.nivel h2 {
+  text-align: center;
+  color: #00bfff;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  border-bottom: 2px solid rgba(0, 191, 255, 0.3);
+  display: inline-block;
+  padding-bottom: 6px;
+}
+
+/* Cards dos membros */
+.membros {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.membro {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 20px;
+  width: 220px;
+  text-align: center;
+  transition: 0.3s;
+  box-shadow: 0 0 15px rgba(0, 191, 255, 0.1);
+  border: 1px solid rgba(0, 191, 255, 0.15);
+}
+
+.membro:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(0, 191, 255, 0.3);
+  border-color: rgba(0, 191, 255, 0.4);
+}
+
+.membro img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.membro p {
+  margin-top: 10px;
+  font-size: 1.1rem;
+  color: #e0e8ff;
+}
+
+.breves img {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  margin-top: 10px;
+  opacity: 0.9;
+}
+
+/* Seção de destaque final */
+.destaque {
+  text-align: center;
+  background: rgba(0, 191, 255, 0.08);
+  border: 1px solid rgba(0, 191, 255, 0.2);
+  border-radius: 16px;
+  padding: 30px;
+  margin: 60px auto;
+  max-width: 900px;
+  box-shadow: 0 0 25px rgba(0, 191, 255, 0.1);
+}
+
+.destaque p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #bcdcff;
+}
+
+/* Rodapé */
+.footer {
+  text-align: center;
+  padding: 25px;
+  font-size: 0.9rem;
+  color: #88a8ff;
+  border-top: 1px solid rgba(0, 191, 255, 0.1);
+  background: rgba(3, 10, 24, 0.6);
+  backdrop-filter: blur(6px);
+}
+
+.footer p {
+  margin: 0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .membros {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .membro {
+    width: 80%;
+  }
+}
