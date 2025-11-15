@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Aeronaves — Força Aérea Brasileira</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+  <!-- Supabase scripts removed, using localStorage only -->
+  <style>
+    /* ===== Fundo animado ===== */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #030a18;
+      color: #e0e8ff;
+      overflow-x: hidden;
+      position: relative;
+    }
+    canvas#bgParticles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    /* Ajustes de contraste sobre o fundo */
+    .banner, .container, .info-section, .popup {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Modal de Login */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      backdrop-filter: blur(5px);
+    }
+    .modal-content {
+      background: rgba(255,255,255,0.1);
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #00bfff;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,191,255,0.5);
+    }
+    .modal-content h3 {
+      color: #00bfff;
+      margin-bottom: 20px;
+    }
+    .modal-content input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #00bfff;
+      border-radius: 5px;
+      background: rgba(255,255,255,0.1);
+      color: #e0e8ff;
+      outline: none;
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .close:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fundo animado -->
+  <canvas id="bgParticles"></canvas>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="brand">
+      <img src="fab.png" alt="logo FAB">
+      <span class="min">| Força Aérea Brasileira</span>
+    </div>
+
+    <ul class="nav-links">
+      <li><a class="nav-link" href="index.html">Início</a></li>
+      <li><a class="nav-link" href="quem-somos.html">Quem Somos</a></li>
+      <li><a class="nav-link" href="hierarquia.html">Hierarquia</a></li>
+      <li><a class="nav-link active" href="aeronaves.html">Aeronaves</a></li>
+    </ul>
+
+    <button id="btnEntrar" class="btn-outline-success">Entrar</button>
+  </nav>
+
+  <section class="banner">
+    <div class="banner-content">
+      <h2>Aeronaves da Força Aérea Brasileira</h2>
+      <p>
+        Conheça as aeronaves que equipam a <strong>Força Aérea Brasileira</strong>, divididas em asa rotativa e asa fixa, garantindo operações eficazes em todo o território nacional.
+      </p>
+      <a href="unidades.html" class="nav-link" style="margin-top: 20px; display: inline-block;">Unidades da FAB</a>
+    </div>
+  </section>
+
+  <div class="container">
+    <section class="header-title">
+      <h1>Aeronaves — Poder Aéreo Brasileiro</h1>
+    </section>
+
+    <div class="card header-content">
+      <img src="fab.png" class="carousel" alt="Símbolo da Força Aérea Brasileira">
+      <p class="slogan">“Dominar os céus com tecnologia e precisão”</p>
+    </div>
+  </div>
+
+  <section class="info-section">
+    <div class="info-row">
+      <div class="info-card">
+        <img src="Tecnologia2.png" alt="Aeronaves de Asa Rotativa">
+        <div class="info-text">
+          <h3>Aeronaves de Asa Rotativa</h3>
+          <p>
+            A FAB investe em aeronaves de asa rotativa para garantir rapidez, precisão e presença em qualquer território do Brasil.
+          </p>
+          <p>
+            A história das aeronaves de asa rotativa na FAB remonta à década de 1950, com a introdução de helicópteros para missões de transporte e resgate. Desde então, evoluíram para incluir modelos avançados utilizados em operações de combate, salvamento e apoio logístico, desempenhando um papel crucial em cenários de emergência e defesa nacional.
+          </p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <img src="AsaFixa.png" alt="Aeronaves de Asa Fixa">
+        <div class="info-text">
+          <h3>Aeronaves de Asa Fixa</h3>
+          <p>
+            A FAB investe em aeronaves de asa fixa para garantir superioridade aérea, alcance estratégico e defesa do espaço aéreo brasileiro.
+          </p>
+          <p>
+            As aeronaves de asa fixa têm uma longa tradição na FAB, iniciando com aviões de treinamento e transporte na era da aviação militar brasileira. Ao longo das décadas, incorporaram tecnologias modernas, incluindo caças supersônicos, bombardeiros estratégicos e aviões de transporte, garantindo a superioridade aérea e a defesa do espaço aéreo nacional.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal de Login -->
+  <div id="loginModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3>Login — FAB</h3>
+      <input type="text" id="loginUser" placeholder="Nome de usuário" />
+      <input type="password" id="loginPassword" placeholder="Digite a senha" />
+      <button id="loginConfirm" class="btn-outline-success">Entrar</button>
+    </div>
+  </div>
+
+
+
+  
+  <!-- Script das partículas -->
+  <script>
+    const canvas = document.getElementById('bgParticles');
+    const ctx = canvas.getContext('2d');
+    let particlesArray;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 3 + 1;
+        this.speedX = Math.random() * 1 - 0.5;
+        this.speedY = Math.random() * 1 - 0.5;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.x > canvas.width) this.x = 0;
+        if (this.x < 0) this.x = canvas.width;
+        if (this.y > canvas.height) this.y = 0;
+        if (this.y < 0) this.y = canvas.height;
+      }
+      draw() {
+        ctx.fillStyle = 'rgba(0,191,255,0.7)';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
+        ctx.fill();
+      }
+    }
+
+    function initParticles() {
+      particlesArray = [];
+      for(let i = 0; i < 100; i++) {
+        particlesArray.push(new Particle());
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      particlesArray.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(animate);
+    }
+
+    initParticles();
+    animate();
+  </script>
+
+</body>
+</html>
