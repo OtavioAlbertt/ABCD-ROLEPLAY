@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Unidades da FAB — Força Aérea Brasileira</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+  <!-- Supabase scripts removed, using localStorage only -->
+  <style>
+    /* ===== Fundo animado ===== */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #030a18;
+      color: #e0e8ff;
+      overflow-x: hidden;
+      position: relative;
+    }
+    canvas#bgParticles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    /* Ajustes de contraste sobre o fundo */
+    .banner, .container, .info-section, .popup {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Modal de Login */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      backdrop-filter: blur(5px);
+    }
+    .modal-content {
+      background: rgba(255,255,255,0.1);
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #00bfff;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,191,255,0.5);
+    }
+    .modal-content h3 {
+      color: #00bfff;
+      margin-bottom: 20px;
+    }
+    .modal-content input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #00bfff;
+      border-radius: 5px;
+      background: rgba(255,255,255,0.1);
+      color: #e0e8ff;
+      outline: none;
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .close:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fundo animado -->
+  <canvas id="bgParticles"></canvas>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="brand">
+      <img src="fab.png" alt="logo FAB">
+      <span class="min">| Força Aérea Brasileira</span>
+    </div>
+
+    <ul class="nav-links">
+      <li><a class="nav-link active" href="unidades.html">Unidades da FAB</a></li>
+    </ul>
+
+    <button id="btnEntrar" class="btn-outline-success">Entrar</button>
+  </nav>
+
+  <section class="banner">
+    <div class="banner-content">
+      <h2>Unidades da Força Aérea Brasileira</h2>
+      <p>
+        Explore as principais unidades organizacionais da <strong>Força Aérea Brasileira</strong>, responsáveis por diferentes aspectos da defesa e operações aéreas.
+      </p>
+    </div>
+  </section>
+
+  <div class="container">
+    <section class="header-title">
+      <h1>Unidades da FAB — Estrutura Organizacional</h1>
+    </section>
+
+    <div class="card header-content">
+      <img src="fab.png" class="carousel" alt="Símbolo da Força Aérea Brasileira">
+      <p class="slogan">“Unidade e força para a defesa nacional”</p>
+    </div>
+  </div>
+
+  <section class="info-section">
+    <div class="info-row">
+      <div class="info-card">
+        <img src="fab.png" alt="Comando da Aeronáutica">
+        <div class="info-text">
+          <h3>Comando da Aeronáutica</h3>
+          <p>
+            Órgão máximo da FAB, responsável pela direção geral das atividades aéreas e defesa nacional.
+          </p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <img src="fab.png" alt="Comando-Geral de Operações Aéreas">
+        <div class="info-text">
+          <h3>Comando-Geral de Operações Aéreas</h3>
+          <p>
+            Coordena as operações aéreas, incluindo defesa, transporte e missões especiais.
+          </p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <img src="fab.png" alt="Comando-Geral de Apoio">
+        <div class="info-text">
+          <h3>Comando-Geral de Apoio</h3>
+          <p>
+            Responsável pelo suporte logístico, manutenção e infraestrutura da FAB.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-row">
+      <div class="info-card">
+        <img src="fab.png" alt="Comando-Geral de Pessoal">
+        <div class="info-text">
+          <h3>Comando-Geral de Pessoal</h3>
+          <p>
+            Gerencia recursos humanos, recrutamento, treinamento e bem-estar dos militares.
+          </p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <img src="fab.png" alt="Comando-Geral de Tecnologia Aeroespacial">
+        <div class="info-text">
+          <h3>Comando-Geral de Tecnologia Aeroespacial</h3>
+          <p>
+            Desenvolve tecnologias avançadas para aeronaves, sistemas de defesa e inovação aeroespacial.
+          </p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <img src="fab.png" alt="Para-Sar">
+        <div class="info-text">
+          <h3>Para-Sar</h3>
+          <p>
+            Unidade especializada em operações de busca e salvamento, resgate e evacuação aeromédica.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal de Login -->
+  <div id="loginModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3>Login — FAB</h3>
+      <input type="text" id="loginUser" placeholder="Nome de usuário" />
+      <input type="password" id="loginPassword" placeholder="Digite a senha" />
+      <button id="loginConfirm" class="btn-outline-success">Entrar</button>
+    </div>
+  </div>
+
+
+
+  
+  <!-- Script das partículas -->
+  <script>
+    const canvas = document.getElementById('bgParticles');
+    const ctx = canvas.getContext('2d');
+    let particlesArray;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 3 + 1;
+        this.speedX = Math.random() * 1 - 0.5;
+        this.speedY = Math.random() * 1 - 0.5;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.x > canvas.width) this.x = 0;
+        if (this.x < 0) this.x = canvas.width;
+        if (this.y > canvas.height) this.y = 0;
+        if (this.y < 0) this.y = canvas.height;
+      }
+      draw() {
+        ctx.fillStyle = 'rgba(0,191,255,0.7)';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
+        ctx.fill();
+      }
+    }
+
+    function initParticles() {
+      particlesArray = [];
+      for(let i = 0; i < 100; i++) {
+        particlesArray.push(new Particle());
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      particlesArray.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(animate);
+    }
+
+    initParticles();
+    animate();
+  </script>
+
+</body>
+</html>
