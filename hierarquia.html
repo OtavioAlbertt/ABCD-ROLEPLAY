@@ -1,262 +1,262 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Hierarquia - Força Aérea Brasileira</title>
-  <link rel="icon" type="image/png" href="assets/logo.png">
+  <!DOCTYPE html>
+  <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Hierarquia - Força Aérea Brasileira</title>
+    <link rel="icon" type="image/png" href="assets/logo.png">
 
-  <!-- Estilo global -->
-  <link rel="stylesheet" href="style.css">
-  <!-- Estilo específico da página -->
-  <link rel="stylesheet" href="style-hierarquia.css">
+    <!-- Estilo global -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Estilo específico da página -->
+    <link rel="stylesheet" href="style-hierarquia.css">
 
-  <style>
-    /* Fundo animado */
-    body {
-      position: relative;
-      background: #030a18;
-      color: #e0e8ff;
-      overflow-x: hidden;
-      font-family: 'Poppins', sans-serif;
-    }
-    canvas#bgParticles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    }
-    /* Garantir que conteúdo fique acima do fundo */
-    .navbar, .container, .footer {
-      position: relative;
-      z-index: 1;
-    }
+    <style>
+      /* Fundo animado */
+      body {
+        position: relative;
+        background: #030a18;
+        color: #e0e8ff;
+        overflow-x: hidden;
+        font-family: 'Poppins', sans-serif;
+      }
+      canvas#bgParticles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+      /* Garantir que conteúdo fique acima do fundo */
+      .navbar, .container, .footer {
+        position: relative;
+        z-index: 1;
+      }
 
-    /* Modal de Login */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.5);
-      backdrop-filter: blur(5px);
-    }
-    .modal-content {
-      background: rgba(255,255,255,0.1);
-      margin: 15% auto;
-      padding: 20px;
-      border: 1px solid #00bfff;
-      border-radius: 10px;
-      width: 80%;
-      max-width: 400px;
-      text-align: center;
-      box-shadow: 0 0 20px rgba(0,191,255,0.5);
-    }
-    .modal-content h3 {
-      color: #00bfff;
-      margin-bottom: 20px;
-    }
-    .modal-content input {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border: 1px solid #00bfff;
-      border-radius: 5px;
-      background: rgba(255,255,255,0.1);
-      color: #e0e8ff;
-      outline: none;
-    }
-    .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .close:hover {
-      color: #fff;
-    }
+      /* Modal de Login */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+        backdrop-filter: blur(5px);
+      }
+      .modal-content {
+        background: rgba(255,255,255,0.1);
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #00bfff;
+        border-radius: 10px;
+        width: 80%;
+        max-width: 400px;
+        text-align: center;
+        box-shadow: 0 0 20px rgba(0,191,255,0.5);
+      }
+      .modal-content h3 {
+        color: #00bfff;
+        margin-bottom: 20px;
+      }
+      .modal-content input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #00bfff;
+        border-radius: 5px;
+        background: rgba(255,255,255,0.1);
+        color: #e0e8ff;
+        outline: none;
+      }
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      .close:hover {
+        color: #fff;
+      }
 
 
-  </style>
-</head>
+    </style>
+  </head>
 
-<body>
+  <body>
 
-  <!-- Fundo animado -->
-  <canvas id="bgParticles"></canvas>
+    <!-- Fundo animado -->
+    <canvas id="bgParticles"></canvas>
 
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="brand">
-      <img src="fab.png" alt="logo">
-      <span class="min">| Força Aérea Brasileira</span>
-    </div>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="brand">
+        <img src="fab.png" alt="logo">
+        <span class="min">| Força Aérea Brasileira</span>
+      </div>
     <ul class="nav-links">
       <li><a class="nav-link" href="index.html">Início</a></li>
       <li><a class="nav-link" href="quem-somos.html">Quem Somos</a></li>
       <li><a class="nav-link active" href="hierarquia.html">Hierarquia</a></li>
+      <li><a class="nav-link" href="aeronaves.html">Aeronaves</a></li>
     </ul>
-    <button id="btnEntrar" class="btn-outline-success">Entrar</button>
-  </nav>
+      <button id="btnEntrar" class="btn-outline-success">Entrar</button>
+    </nav>
 
-  <!-- Modal de Login -->
-  <div id="loginModal" class="modal" style="display: none;">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h3>Login — FAB</h3>
-      <input type="text" id="loginUser" placeholder="Nome de usuário" />
-      <input type="password" id="loginPassword" placeholder="Digite a senha" />
-      <button id="loginConfirm" class="btn-outline-success">Entrar</button>
+    <!-- Modal de Login -->
+    <div id="loginModal" class="modal" style="display: none;">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Login — FAB</h3>
+        <input type="text" id="loginUser" placeholder="Nome de usuário" />
+        <input type="password" id="loginPassword" placeholder="Digite a senha" />
+        <button id="loginConfirm" class="btn-outline-success">Entrar</button>
+      </div>
     </div>
-  </div>
 
-  <div class="container">
-    <h1 class="titulo">Hierarquia da Força Aérea Brasileira</h1>
+    <div class="container">
+      <h1 class="titulo">Hierarquia da Força Aérea Brasileira</h1>
 
-  <!-- COMANDO GERAL -->
-    <section class="nivel">
-      <h2>Comando Geral</h2>
-      <div class="membros">
-        <div class="membro">
-          <img src="major.jpeg" alt="Major">
-          <p><strong>Maj. Luke</strong></p>
-          <div class="breves">
-            <img src="fab.png" alt="FAB">
+    <!-- COMANDO GERAL -->
+      <section class="nivel">
+        <h2>Comando Geral</h2>
+        <div class="membros">
+          <div class="membro">
+            <img src="major.jpeg" alt="Major">
+            <p><strong>Maj. Luke</strong></p>
+            <div class="breves">
+              <img src="fab.png" alt="FAB">
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- COMANDANTE -->
-    <section class="nivel">
-      <h2>Comandante</h2>
-      <div class="membros">
-        <div class="membro">
-          <img src="1_sargento.jpeg" alt="1° Sargento">
-          <p><strong>1° Sgt. Albert</strong></p>
-          <div class="breves">
-            <img src="fab.png" alt="FAB">
+      <!-- COMANDANTE -->
+      <section class="nivel">
+        <h2>Comandante</h2>
+        <div class="membros">
+          <div class="membro">
+            <img src="1_sargento.jpeg" alt="1° Sargento">
+            <p><strong>1° Sgt. Albert</strong></p>
+            <div class="breves">
+              <img src="fab.png" alt="FAB">
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- SUBCOMANDANTE -->
-    <section class="nivel">
-      <h2>Subcomandante</h2>
-      <div class="membros">
-        <div class="membro">
-          <img src="2_sargento.jpeg" alt="2° Sargento">
-          <p><strong>2° Sgt. Carolina</strong></p>
-          <div class="breves">
-            <img src="fab.png" alt="FAB">
+      <!-- SUBCOMANDANTE -->
+      <section class="nivel">
+        <h2>Subcomandante</h2>
+        <div class="membros">
+          <div class="membro">
+            <img src="2_sargento.jpeg" alt="2° Sargento">
+            <p><strong>2° Sgt. Carolina</strong></p>
+            <div class="breves">
+              <img src="fab.png" alt="FAB">
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- MEMBROS E PILOTOS -->
-    <section class="nivel">
-      <h2>Pilotos e Membros Operacionais</h2>
-      <div class="membros">
-        <div class="membro">
-          <img src="1_tenente.jpeg" alt="1° Tenente">
-          <p><strong>1° Ten. Prendel</strong></p>
-          <div class="breves">
-            <img src="fab.png" alt="FAB">
+      <!-- MEMBROS E PILOTOS -->
+      <section class="nivel">
+        <h2>Pilotos e Membros Operacionais</h2>
+        <div class="membros">
+          <div class="membro">
+            <img src="1_tenente.jpeg" alt="1° Tenente">
+            <p><strong>1° Ten. Prendel</strong></p>
+            <div class="breves">
+              <img src="fab.png" alt="FAB">
+            </div>
+          </div>
+          <div class="membro">
+            <img src="capitao.jpeg" alt="Capitão">
+            <p><strong>Cap. Vallote</strong></p>
+            <div class="breves">
+              <img src="fab.png" alt="FAB">
+            </div>
           </div>
         </div>
-        <div class="membro">
-          <img src="capitao.jpeg" alt="Capitão">
-          <p><strong>Cap. Vallote</strong></p>
-          <div class="breves">
-            <img src="fab.png" alt="FAB">
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- NOVA SEÇÃO OPCIONAL -->
-    <section class="nivel destaque">
-      <h2>Missão e Compromisso</h2>
-      <p>
-        Cada integrante da <b>Força Aérea Brasileira</b> carrega consigo a responsabilidade de proteger o espaço aéreo nacional
-        e representar com honra as <i>Asas que Protegem o País</i>.  
-        A hierarquia reflete o respeito, a disciplina e a confiança que sustentam o poder aéreo do Brasil.
-      </p>
-    </section>
-  </div>
+      <!-- NOVA SEÇÃO OPCIONAL -->
+      <section class="nivel destaque">
+        <h2>Missão e Compromisso</h2>
+        <p>
+          Cada integrante da <b>Força Aérea Brasileira</b> carrega consigo a responsabilidade de proteger o espaço aéreo nacional
+          e representar com honra as <i>Asas que Protegem o País</i>.  
+          A hierarquia reflete o respeito, a disciplina e a confiança que sustentam o poder aéreo do Brasil.
+        </p>
+      </section>
+    </div>
 
-  <footer class="footer">
-    <p>© 2025 Força Aérea Brasileira - Servidor ABCD | Todos os direitos reservados pelo servidor ABCD Roleplay.</p>
-  </footer>
+    <footer class="footer">
+      <p>© 2025 Força Aérea Brasileira - Servidor ABCD | Todos os direitos reservados pelo servidor ABCD Roleplay.</p>
+    </footer>
 
 
 
 
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 
-  <!-- Script das partículas -->
-  <script>
-    const canvas = document.getElementById('bgParticles');
-    const ctx = canvas.getContext('2d');
-    let particlesArray;
+    <!-- Script das partículas -->
+    <script>
+      const canvas = document.getElementById('bgParticles');
+      const ctx = canvas.getContext('2d');
+      let particlesArray;
 
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    class Particle {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 3 + 1;
-        this.speedX = Math.random() * 1 - 0.5;
-        this.speedY = Math.random() * 1 - 0.5;
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
       }
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        if (this.x > canvas.width) this.x = 0;
-        if (this.x < 0) this.x = canvas.width;
-        if (this.y > canvas.height) this.y = 0;
-        if (this.y < 0) this.y = canvas.height;
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+
+      class Particle {
+        constructor() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          this.size = Math.random() * 3 + 1;
+          this.speedX = Math.random() * 1 - 0.5;
+          this.speedY = Math.random() * 1 - 0.5;
+        }
+        update() {
+          this.x += this.speedX;
+          this.y += this.speedY;
+          if (this.x > canvas.width) this.x = 0;
+          if (this.x < 0) this.x = canvas.width;
+          if (this.y > canvas.height) this.y = 0;
+          if (this.y < 0) this.y = canvas.height;
+        }
+        draw() {
+          ctx.fillStyle = 'rgba(0,191,255,0.7)';
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
+          ctx.fill();
+        }
       }
-      draw() {
-        ctx.fillStyle = 'rgba(0,191,255,0.7)';
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
-        ctx.fill();
+
+      function initParticles() {
+        particlesArray = [];
+        for(let i = 0; i < 100; i++) {
+          particlesArray.push(new Particle());
+        }
       }
-    }
 
-    function initParticles() {
-      particlesArray = [];
-      for(let i = 0; i < 100; i++) {
-        particlesArray.push(new Particle());
+      function animate() {
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        particlesArray.forEach(p => { p.update(); p.draw(); });
+        requestAnimationFrame(animate);
       }
-    }
 
-    function animate() {
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      particlesArray.forEach(p => { p.update(); p.draw(); });
-      requestAnimationFrame(animate);
-    }
+      initParticles();
+      animate();
+    </script>
 
-    initParticles();
-    animate();
-  </script>
-
-</body>
-</html>
-
+  </body>
+  </html>
