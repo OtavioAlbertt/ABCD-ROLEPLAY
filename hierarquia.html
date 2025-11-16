@@ -34,6 +34,24 @@
         z-index: 1;
       }
 
+      /* Layout da hierarquia */
+      .hierarquia-layout {
+        display: flex;
+        gap: 30px;
+        align-items: flex-start;
+      }
+      .hierarquia-lista {
+        flex: 1;
+      }
+      .warrior-card {
+        flex: 0 0 300px;
+        background: rgba(255,255,255,0.1);
+        border: 1px solid #00bfff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 0 20px rgba(0,191,255,0.3);
+      }
+
       /* Modal de Login */
       .modal {
         display: none;
@@ -43,8 +61,15 @@
         top: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0,0,0,0.5);
-        backdrop-filter: blur(5px);
+        background-color: rgba(0,0,0,0.7);
+        backdrop-filter: blur(8px);
+        pointer-events: auto;
+      }
+      .modal.warrior-modal {
+        pointer-events: none;
+      }
+      .modal.warrior-modal .modal-content {
+        pointer-events: auto;
       }
       .modal-content {
         background: rgba(255,255,255,0.1);
@@ -117,10 +142,14 @@
       </div>
     </div>
 
-    <div class="container">
-      <h1 class="titulo">Hierarquia da Força Aérea Brasileira</h1>
 
-    <!-- COMANDO GERAL -->
+
+    <div class="container">
+      <div class="hierarquia-layout">
+        <div class="hierarquia-lista">
+          <h1 class="titulo">Hierarquia da Força Aérea Brasileira</h1>
+
+      <!-- COMANDO GERAL -->
       <section class="nivel">
         <h2>Comando Geral</h2>
         <div class="membros">
@@ -188,10 +217,18 @@
         <h2>Missão e Compromisso</h2>
         <p>
           Cada integrante da <b>Força Aérea Brasileira</b> carrega consigo a responsabilidade de proteger o espaço aéreo nacional
-          e representar com honra as <i>Asas que Protegem o País</i>.  
+          e representar com honra as <i>Asas que Protegem o País</i>.
           A hierarquia reflete o respeito, a disciplina e a confiança que sustentam o poder aéreo do Brasil.
         </p>
       </section>
+        </div>
+        <div class="warrior-card" id="warriorCard" style="display: none;">
+          <img id="warriorImage" src="" alt="Foto do Guerreiro" style="width: 100%; max-height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 15px;">
+          <h3 id="warriorName" style="color: #00bfff; margin-bottom: 10px;"></h3>
+          <p id="warriorRole" style="color: #e0e8ff; font-weight: bold; margin-bottom: 15px;"></p>
+          <p id="warriorDescription" style="color: #e0e8ff; line-height: 1.5;"></p>
+        </div>
+      </div>
     </div>
 
     <footer class="footer">
