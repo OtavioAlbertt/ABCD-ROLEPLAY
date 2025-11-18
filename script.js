@@ -45,33 +45,13 @@ const warriorDetails = {
 
 // =================== LOCALSTORAGE FUNCTIONS ===================
 
-// Carregar dados iniciais do data.json se localStorage estiver vazio
-async function loadInitialData() {
+// Carregar dados iniciais - apenas inicializar localStorage se vazio
+function loadInitialData() {
   if (!localStorage.getItem(STORAGE_KEY)) {
-    try {
-      const response = await fetch('./data.json');
-      if (response.ok) {
-        const data = await response.json();
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(data.alistamentos || []));
-      } else {
-        console.log('Erro na resposta:', response.status);
-      }
-    } catch (error) {
-      console.log('Erro ao carregar dados iniciais de alistamentos:', error);
-    }
+    localStorage.setItem(STORAGE_KEY, JSON.stringify([]));
   }
   if (!localStorage.getItem('aeronaves')) {
-    try {
-      const response = await fetch('./data.json');
-      if (response.ok) {
-        const data = await response.json();
-        localStorage.setItem('aeronaves', JSON.stringify(data.aeronaves || []));
-      } else {
-        console.log('Erro na resposta:', response.status);
-      }
-    } catch (error) {
-      console.log('Erro ao carregar dados iniciais de aeronaves:', error);
-    }
+    localStorage.setItem('aeronaves', JSON.stringify([]));
   }
 }
 
