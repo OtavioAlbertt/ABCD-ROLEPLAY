@@ -1,4 +1,45 @@
 {
   "alistamentos": [],
-  "aeronaves": []
+  "aeronaves": [
+    {
+      "prefixo": "teste",
+      "modelo": "teste",
+      "categoria": "teste",
+      "proprietario": "teste",
+      "dataRegistro": "2025-10-29",
+      "situacao": "Ativa",
+      "foto": "https://media.discordapp.net/attachments/1396259870172250184/1432212346956157000/image.png?ex=691358f0&is=69120770&hm=1fa5d85203219d2208bcf2cbfcd0dfafb7f99f2dd3ac5b9f2a8cfb3e184dd7c8&=&format=webp&quality=lossless&width=401&height=401",
+      "registradoPor": null
+    },
+    {
+      "prefixo": "teste",
+      "modelo": "teste",
+      "categoria": "teste",
+      "proprietario": "teste",
+      "dataRegistro": "2025-10-29",
+      "situacao": "Ativa",
+      "foto": "https://media.discordapp.net/attachments/1396259870172250184/1432212346956157000/image.png?ex=691358f0&is=69120770&hm=1fa5d85203219d2208bcf2cbfcd0dfafb7f99f2dd3ac5b9f2a8cfb3e184dd7c8&=&format=webp&quality=lossless&width=401&height=401",
+      "registradoPor": null
+    },
+    {
+      "prefixo": "teste",
+      "modelo": "teste",
+      "categoria": "te2131231",
+      "proprietario": "23123",
+      "dataRegistro": "2025-11-12",
+      "situacao": "Ativa",
+      "foto": "https://media.discordapp.net/attachments/1418799443909546095/1440131019205378129/image.png?ex=691d0a07&is=691bb887&hm=1ddd344157bad65e48964f23ef67c256d336c6c4b66c592d46cc666a11eae32d&=&format=webp&quality=lossless&width=1280&height=720",
+      "registradoPor": null
+    },
+    {
+      "prefixo": "teste",
+      "modelo": "teste",
+      "categoria": "te2131231",
+      "proprietario": "23123",
+      "dataRegistro": "2025-11-12",
+      "situacao": "Ativa",
+      "foto": "https://media.discordapp.net/attachments/1418799443909546095/1440131019205378129/image.png?ex=691d0a07&is=691bb887&hm=1ddd344157bad65e48964f23ef67c256d336c6c4b66c592d46cc666a11eae32d&=&format=webp&quality=lossless&width=1280&height=720",
+      "registradoPor": null
+    }
+  ]
 }
